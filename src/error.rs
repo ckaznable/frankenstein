@@ -6,13 +6,13 @@ pub enum Error {
     #[error("Api Error {0:?}")]
     Api(ErrorResponse),
 
-    #[cfg(any(feature = "client-reqwest", feature = "client-ureq"))]
+    #[cfg(any(feature = "reqwest", feature = "client-ureq"))]
     #[error("JSON Decode Error: {source} on {input}")]
     JsonDecode {
         source: serde_json::Error,
         input: String,
     },
-    #[cfg(any(feature = "client-reqwest", feature = "client-ureq"))]
+    #[cfg(any(feature = "reqwest", feature = "client-ureq"))]
     #[error("JSON Encode Error: {source} on {input}")]
     JsonEncode {
         source: serde_json::Error,
@@ -22,11 +22,11 @@ pub enum Error {
     #[error("Read File Error: {0}")]
     ReadFile(#[source] std::io::Error),
 
-    #[cfg(all(feature = "client-reqwest", target_arch = "wasm32"))]
+    #[cfg(all(feature = "reqwest", target_arch = "wasm32"))]
     #[error("Handling files is not yet supported in Wasm due to missing form_data / attachment support. Pull Request welcome!")]
     WasmHasNoFileSupportYet,
 
-    #[cfg(feature = "client-reqwest")]
+    #[cfg(feature = "reqwest")]
     #[error("HTTP error: {0}")]
     HttpReqwest(#[source] reqwest::Error),
 

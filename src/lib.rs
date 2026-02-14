@@ -2,7 +2,7 @@
 #![cfg_attr(test, allow(dead_code))]
 #![doc = include_str!("../README.md")]
 
-#[cfg(feature = "client-reqwest")]
+#[cfg(feature = "reqwest")]
 pub use reqwest;
 #[cfg(feature = "client-ureq")]
 pub use ureq;
@@ -14,7 +14,7 @@ pub use self::trait_async::AsyncTelegramApi;
 #[cfg(feature = "trait-sync")]
 pub use self::trait_sync::TelegramApi;
 
-#[cfg(feature = "client-reqwest")]
+#[cfg(feature = "reqwest")]
 pub mod client_reqwest;
 #[cfg(feature = "client-ureq")]
 pub mod client_ureq;
@@ -24,7 +24,7 @@ pub mod gifts;
 pub mod inline_mode;
 pub mod input_file;
 pub mod input_media;
-#[cfg(any(feature = "client-reqwest", feature = "client-ureq"))]
+#[cfg(any(feature = "reqwest", feature = "client-ureq"))]
 mod json;
 mod macros;
 pub mod methods;

@@ -27,8 +27,9 @@ Without enabling any additional features this crate will only ship with Telegram
   - `client-ureq` - a blocking HTTP API client based on `ureq`
   - `trait-sync` - a blocking API trait, it's included in the `client-ureq` feature. It may be useful for people who want to create a custom blocking client (for example, replacing an HTTP client)
 - async
-  - `client-reqwest` - an async HTTP API client based on `reqwest`. This client partially supports wasm32, but file uploads are currently not supported there.
-  - `trait-async` - an async API trait, it's used in the `client-reqwest`. It may be useful for people who want to create a custom async client
+  - `client-reqwest` - an async HTTP API client based on `reqwest` (uses `rustls` by default). This client partially supports wasm32, but file uploads are currently not supported there.
+  - `client-reqwest-native-tls` - an async HTTP API client based on `reqwest` using `native-tls`.
+  - `trait-async` - an async API trait, it's used in the async clients. It may be useful for people who want to create a custom async client
 
 For example for the async client add the following line to your `Cargo.toml` file:
 
